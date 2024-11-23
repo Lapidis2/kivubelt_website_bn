@@ -25,7 +25,10 @@ async function createService(req, res) {
         })
         await newServise.save()
         if (newServise)
-            res.status(201).json({ newServise })
+            res.status(201).json({
+                message: "Service created successfull",
+                newServise
+            })
 
 
     } catch (error) {

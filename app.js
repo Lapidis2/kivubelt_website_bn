@@ -3,9 +3,9 @@ const express = require("express");
 const router = require("./routes/userRouter");
 const dbConfig = require('./dbConfig')
 const app = express();
-const subrutes = require("./routes/subRoutes")
-const serviceroutes = require("./routes/servicerouter")
-app.set("view engine", "ejs");
+const reviewRoute = require("./routes/reviewRoutes")
+const subroutes = require("./routes/subRoutes")
+const serviceroutes = require("./routes/reviewRoutes")
 
 // Middleware
 app.use(express.json());
@@ -13,12 +13,12 @@ app.use(express.static("public"));
 
 // Route to render the dashboard
 app.get("/", (req, res) => {
-    res.render("dashboard");
+
 });
 
 app.use("/", router);
-app.use("/", serviceroutes)
-app.use("/", subrutes)
+app.use("/", reviewRoute)
+app.use("/", subroutes)
     // Start the server
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
