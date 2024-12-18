@@ -23,7 +23,7 @@ const signup_post = async(req, res) => {
             confirmToken: crypto.randomBytes(20).toString("hex"),
         };
         const user = await User.create(newUser);
-        console.log(newUser);
+
         await user.save();
 
         const token = await jwt.sign({ user }, process.env.SCRET_KEY, {
@@ -135,7 +135,28 @@ const delete_user = async(req, res) => {
         res.status(500).json({ message: "internal server error", error });
     }
 };
+const confirmEmail = async(req, res) => {
 
+    try {
+        const token = req.params.token
+        const user = await User.findOne({
+            confirmToken: token
+        })
+        if (!user) {
+            return res.status(404).json({ message: "Invalid or expired token" });
+        }
+        user.isConfirmed = true,
+            user.confirmToken = null
+        await user.save()
+        res.status(200).json({
+            message: "Account confirmation successfull!"
+        })
+
+    } catch (error) {
+        res.status(500).json({ message: "internal server error", error })
+
+    }
+}
 
 const get_user = (req, res) => {};
 
@@ -147,4 +168,5 @@ module.exports = {
     get_all_user,
     get_user,
     delete_user,
+    confirmEmail
 };

@@ -11,8 +11,6 @@ async function subscribe(req, res) {
         await Subscription.create({ email });
         const GMAIL = process.env.Admin_email;
         const GMAIL_PASSWORD = process.env.admin_psswd;
-
-        console.log(GMAIL, GMAIL_PASSWORD, email);
         let config = {
             service: "gmail",
             auth: {
@@ -33,9 +31,9 @@ async function subscribe(req, res) {
 
         let response = {
             body: {
-                name: "LC ecommerce",
+                name: "KIVU GRAFTER WEBSITE",
                 intro: "You have successfully subscribed to our Newsletter!",
-                body: "You will be receiving the updates every time there is new atricle posted",
+                body: "You will be receiving the updates every time there is new arTicle posted",
                 outro: "Looking forward to do more business",
             },
         };
