@@ -2,20 +2,19 @@ const mongoose = require("mongoose")
 const reviewSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     email: {
         type: String,
-        required: true
-
+        required: true,
     },
     feedback: {
         type: String,
-        required: true
+        required: true,
     },
     createdAt: {
         type: Date,
-        default: Date.now()
-    }
-})
+        default: Date.now(),
+    },
+});
 module.exports = mongoose.model("review", reviewSchema)
