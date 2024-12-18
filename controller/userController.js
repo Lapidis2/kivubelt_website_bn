@@ -67,7 +67,6 @@ const signup_post = async(req, res) => {
     }
 
 };
-// login Route
 const signin_post = async(req, res) => {
     try {
         const { email, password } = req.body;
@@ -88,7 +87,6 @@ const signin_post = async(req, res) => {
             return res.status(400).json({ message: "incorrect password" });
         }
 
-        // Create a JWT token
         const token = await jwt.sign({ userId: user._id }, process.env.SCRET_KEY, {
             expiresIn: "1h",
         });
@@ -145,8 +143,8 @@ const confirmEmail = async(req, res) => {
         if (!user) {
             return res.status(404).json({ message: "Invalid or expired token" });
         }
-        user.isConfirmed = true,
-            user.confirmToken = null
+        user.isConfirmed = true;
+        user.confirmToken = null;
         await user.save()
         res.status(200).json({
             message: "Account confirmation successfull!"

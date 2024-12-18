@@ -15,7 +15,7 @@ async function createService(req, res) {
 
         let imageUrl = ""
         const result = await cloudinary.uploader.upload(imgpath)
-        fs.unlinkSync(req.file.path) //remove all temporary files
+        fs.unlinkSync(req.file.path)
         imageUrl = result.secure_url
         const newServise = await Service.create({
             title,
