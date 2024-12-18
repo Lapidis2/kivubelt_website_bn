@@ -1,14 +1,18 @@
 const mongoose = require("mongoose")
 const reviewSchema = new mongoose.Schema({
-    sender: {
+    name: {
         type: String,
-        required: true
+        required: false
     },
-    message: {
+    email: {
         type: String,
         required: true
 
     },
+    feedback: {
+        type: String,
+        required: true
+    };
     createdAt: {
         type: Date,
         default: Date.now()
