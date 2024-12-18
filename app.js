@@ -11,7 +11,7 @@ const serviceroutes = require("./routes/reviewRoutes")
 app.use(express.json());
 app.use(express.static("public"));
 
-// Route to render the dashboard
+
 app.get("/", (req, res) => {
 
 });
