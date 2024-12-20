@@ -18,7 +18,7 @@ app.use(
 );
 app.use(
     cors({
-        origin: "*",
+        origin: "https://kivu-grafter.netlify.app",
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type"],
     })
