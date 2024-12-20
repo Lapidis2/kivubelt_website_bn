@@ -7,7 +7,15 @@ const reviewRoute = require("./routes/reviewRoutes")
 const subroutes = require("./routes/subRoutes")
 const serviceroutes = require("./routes/reviewRoutes")
 
-// Middleware
+const cors = require("cors");
+app.use(
+    cors({
+        origin: "https://kivu-grafter.netlify.app/",
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        allowedHeaders: ["Content-Type"],
+    })
+);
+
 app.use(express.json());
 app.use(express.static("public"));
 
