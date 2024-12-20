@@ -8,6 +8,14 @@ const subroutes = require("./routes/subRoutes")
 const serviceroutes = require("./routes/reviewRoutes")
 
 const cors = require("cors");
+app.options("*", cors());
+app.use(
+    cors({
+        origin: "*",
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        allowedHeaders: ["Content-Type"],
+    })
+);
 app.use(
     cors({
         origin: "*",
