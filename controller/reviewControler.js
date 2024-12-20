@@ -4,7 +4,7 @@ const reviewModal = require("../modal/reviewModal")
 async function createReview(req, res) {
     try {
         const { name, email, feedback } = req.body
-        if (!feedback, !email)
+        if (!feedback && name && !email)
             res.status(400).json({
                 message: "Please fill all required field"
             })
