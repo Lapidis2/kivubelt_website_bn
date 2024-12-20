@@ -35,7 +35,6 @@ app.get("/", (req, res) => {
 app.use("/", router);
 app.use("/", reviewRoute)
 app.use("/", subroutes)
-    // Start the server
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Server is listening on port: http://localhost:${PORT}`);
