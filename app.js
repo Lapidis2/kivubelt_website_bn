@@ -8,21 +8,26 @@ const subroutes = require("./routes/subRoutes")
 const serviceroutes = require("./routes/reviewRoutes")
 
 const cors = require("cors");
-app.options("*", cors());
+
+const allowedOrigins = [
+    "http://127.0.0.1:5500",
+    "https://kivu-grafter.netlify.app", // Production (Netlify)
+];
+
 app.use(
     cors({
-        origin: "*",
+        origin: function(origin, callback) {
+            if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+        },
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type"],
     })
 );
-app.use(
-    cors({
-        origin: "https://kivu-grafter.netlify.app",
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type"],
-    })
-);
+
 
 app.use(express.json());
 app.use(express.static("public"));
