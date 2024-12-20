@@ -10,7 +10,7 @@ const serviceroutes = require("./routes/reviewRoutes")
 const cors = require("cors");
 app.use(
     cors({
-        origin: "https://kivu-grafter.netlify.app/",
+        origin: "*",
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type"],
     })
@@ -19,15 +19,7 @@ app.use(
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use((req, res, next) => {
-    res.header(
-        "Access-Control-Allow-Origin",
-        "https://kivu-grafter.netlify.app/"
-    );
-    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    next();
-});
+
 app.get("/", (req, res) => {
 
 });
